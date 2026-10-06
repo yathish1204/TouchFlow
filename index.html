@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TouchFlow — Fast, Secure & Easy Visitor Registration</title>
+    <meta name="description"
+        content="AI-powered visitor check-in system in a minute with Fast, Secure and Easy guest registration.">
+    <meta name="author" content="TouchFlow" />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script src="assets/js/main.js" defer></script>
+</head>
+
+<body>
+    <div id="app" class="app-shell">
+
+        <!-- 1. RESPONSIVE APP HEADER -->
+        <header class="app-header" role="banner">
+            <div class="app-header-inner max-w-8xl">
+                <!-- Logo -->
+                <a href="#" class="brand-link" aria-label="TouchFlow Home">
+                    <div class="brand-icon-wrap">
+                        <svg width="38" height="38" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true">
+                            <rect x="3" y="2" width="34" height="8.71795" rx="4.35897" fill="url(#tf-head-grad1)" />
+                            <rect x="15.2051" y="12.8965" width="8.71795" height="24.4103" rx="4.35897"
+                                fill="url(#tf-head-grad2)" />
+                            <defs>
+                                <linearGradient id="tf-head-grad1" x1="3" y1="6.35897" x2="37" y2="6.35897"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#007AFF" />
+                                    <stop offset="1" stop-color="#28D9ED" />
+                                </linearGradient>
+                                <linearGradient id="tf-head-grad2" x1="15.2051" y1="12.8965" x2="15.2051" y2="37.3067"
+                                    gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#14B9EE" />
+                                    <stop offset="1" stop-color="#28D9ED" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="brand-text">
+                        <div class="brand-title">
+                            <span class="text-touch">Touch</span><span class="text-flow">Flow</span><span
+                                class="text-trademark">®</span>
+                        </div>
+                        <div class="brand-subtitle">VISITOR REGISTRATION</div>
+                    </div>
+                </a>
+
+                <!-- Desktop & Tablet Header Accessibility Actions -->
+                <div class="header-actions" role="navigation" aria-label="Header Utilities">
+                    <!-- Language Selector -->
+                    <div class="relative">
+                        <button id="langBtn" type="button" class="btn-utility" aria-haspopup="listbox"
+                            aria-expanded="false" title="Change Language">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="2" y1="12" x2="22" y2="12"></line>
+                                <path
+                                    d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                                </path>
+                            </svg>
+                            <span id="currentLangLabel">English</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+
+                        <!-- Language Dropdown Popover -->
+                        <div id="langDropdown" class="popover-dropdown" role="listbox" hidden>
+                            <button type="button" class="lang-option is-active" data-lang="English" role="option"
+                                aria-selected="true">
+                                <span>English (US)</span>
+                                <span class="check-mark" style="color: #18b968; font-weight: bold;">✓</span>
+                            </button>
+                            <button type="button" class="lang-option" data-lang="Español" role="option">
+                                <span>Español</span>
+                            </button>
+                            <button type="button" class="lang-option" data-lang="Français" role="option">
+                                <span>Français</span>
+                            </button>
+                            <button type="button" class="lang-option" data-lang="Deutsch" role="option">
+                                <span>Deutsch</span>
+                            </button>
+                            <button type="button" class="lang-option" data-lang="हिन्दी" role="option">
+                                <span>हिन्दी (Hindi)</span>
+                            </button>
+                            <button type="button" class="lang-option" data-lang="日本語" role="option">
+                                <span>日本語</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Need Help? Dropdown -->
+                    <div class="relative">
+                        <button id="helpBtn" type="button" class="btn-utility" aria-haspopup="true"
+                            aria-expanded="false" title="Need Assistance?">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <span>Need Help?</span>
+                            <svg class="help-chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                                aria-hidden="true">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </button>
+
+                        <!-- Help Dropdown Popover -->
+                        <div id="helpDropdown" class="popover-dropdown help-popover-dropdown" role="region"
+                            aria-label="Visitor Assistance Options" hidden>
+                            <div class="help-dropdown-header">
+                                <div class="help-dropdown-badge">
+                                    <span>🛎️</span>
+                                    <span>Visitor Assistance</span>
+                                </div>
+
+                            </div>
+                            <div class="help-dropdown-list">
+                                <a href="tel:101" class="help-dropdown-item"
+                                    onclick="alert('Connecting to Front Desk...');">
+                                    <div class="help-item-icon">📞</div>
+                                    <div class="help-item-details">
+                                        <span class="help-item-title">Call Reception Desk</span>
+                                        <span class="help-item-desc">Front office coordinator</span>
+                                    </div>
+                                </a>
+                                <button type="button" class="help-dropdown-item"
+                                    onclick="alert('Audio directions enabled.');">
+                                    <div class="help-item-icon">🔊</div>
+                                    <div class="help-item-details">
+                                        <span class="help-item-title">Audio Guidance</span>
+                                        <span class="help-item-desc">Enable spoken step-by-step assistance</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mobile Responsive Hamburger Button (Shown on mobile devices) -->
+                <button id="hamburgerBtn" type="button" class="hamburger-btn"
+                    aria-label="Open accessibility options menu" aria-expanded="false"
+                    aria-controls="mobileDrawerOverlay">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- 2. MOBILE RESPONSIVE ACCESSIBILITY DRAWER -->
+        <div id="mobileDrawerOverlay" class="mobile-drawer-overlay" role="dialog" aria-modal="true"
+            aria-labelledby="drawerTitle">
+            <div class="mobile-drawer-panel">
+                <div class="drawer-header">
+                    <div id="drawerTitle" class="drawer-title">
+                        <span>Accessibility & Options</span>
+                    </div>
+                    <button id="closeDrawerBtn" type="button" class="drawer-close-btn"
+                        aria-label="Close menu">✕</button>
+                </div>
+
+                <div class="drawer-content">
+                    <!-- Expandable Language Dropdown -->
+                    <div class="drawer-dropdown-group">
+                        <div class="drawer-section-title">Language</div>
+                        <div class="drawer-dropdown-wrap">
+                            <button type="button" id="drawerLangTrigger" class="drawer-dropdown-trigger"
+                                aria-haspopup="listbox" aria-expanded="false" title="Click to expand language options">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🌐</span>
+                                    <span id="drawerCurrentLangLabel">English (US)</span>
+                                </div>
+                                <svg class="drawer-chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+
+                            <div id="drawerLangMenu" class="drawer-dropdown-menu" role="listbox" hidden>
+                                <button type="button" class="drawer-item drawer-lang-item is-active" data-lang="English"
+                                    role="option" aria-selected="true">
+                                    <span>English (US)</span>
+                                    <span class="drawer-check" style="color: #18b968; font-weight: bold;">✓</span>
+                                </button>
+                                <button type="button" class="drawer-item drawer-lang-item" data-lang="Español"
+                                    role="option">
+                                    <span>Español</span>
+                                </button>
+                                <button type="button" class="drawer-item drawer-lang-item" data-lang="Français"
+                                    role="option">
+                                    <span>Français</span>
+                                </button>
+                                <button type="button" class="drawer-item drawer-lang-item" data-lang="Deutsch"
+                                    role="option">
+                                    <span>Deutsch</span>
+                                </button>
+                                <button type="button" class="drawer-item drawer-lang-item" data-lang="हिन्दी"
+                                    role="option">
+                                    <span>हिन्दी (Hindi)</span>
+                                </button>
+                                <button type="button" class="drawer-item drawer-lang-item" data-lang="日本語"
+                                    role="option">
+                                    <span>日本語</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Expandable Support & Assistance Dropdown inside Drawer -->
+                    <div class="drawer-dropdown-group">
+                        <div class="drawer-section-title">Support & Assistance</div>
+                        <div class="drawer-dropdown-wrap">
+                            <button type="button" id="drawerHelpTrigger" class="drawer-dropdown-trigger"
+                                aria-haspopup="true" aria-expanded="false" title="Click to expand assistance options">
+                                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                    <span>🛎️</span>
+                                    <span>Visitor Assistance</span>
+                                </div>
+                                <svg class="drawer-chevron-icon" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </button>
+
+                            <div id="drawerHelpMenu" class="drawer-dropdown-menu drawer-help-menu" hidden>
+                                <a href="tel:101" class="drawer-help-item"
+                                    onclick="alert('Connecting to Front Desk extension 101...');">
+                                    <div class="help-item-icon sm">📞</div>
+                                    <div class="help-item-details">
+                                        <span class="help-item-title">Call Reception Desk</span>
+                                        <span class="help-item-desc">Front office coordinator (Ext 101)</span>
+                                    </div>
+                                </a>
+                                <button type="button" class="drawer-help-item"
+                                    onclick="alert('Audio directions enabled: Welcome to TouchFlow. Please tap Get Started to register.');">
+                                    <div class="help-item-icon sm">🔊</div>
+                                    <div class="help-item-details">
+                                        <span class="help-item-title">Audio Guidance</span>
+                                        <span class="help-item-desc">Enable spoken step-by-step assistance</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display & Accessibility Toggles -->
+                    <div>
+                        <div class="drawer-section-title">Display Preferences</div>
+                        <div class="drawer-list">
+                            <div class="drawer-switch-row">
+                                <span class="drawer-switch-label">High Contrast</span>
+                                <button type="button" id="toggleContrastBtn" class="btn-utility"
+                                    style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
+                                    Default
+                                </button>
+                            </div>
+                            <div class="drawer-switch-row">
+                                <span class="drawer-switch-label">Font Size</span>
+                                <button type="button" id="toggleFontBtn" class="btn-utility"
+                                    style="padding: 0.35rem 0.85rem; font-size: 0.8rem;">
+                                    Standard
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. WELCOME HERO SECTION -->
+        <main id="welcomeScreen" class="welcome-screen" role="main" data-screen="welcome">
+            <div class="welcome-container">
+
+                <!-- Welcome Eyebrow -->
+                <div class="welcome-eyebrow">
+                    <span class="wave-icon" aria-hidden="true">👋</span>
+                    <span>Welcome</span>
+                </div>
+
+                <!-- Hero Headline -->
+                <h1 class="welcome-title">
+                    <span class="title-line">Check in</span>
+                    <span class="title-line">
+                        In a
+                        <span class="title-highlight-wrap">
+                            minute
+                            <!-- Underline Swoosh -->
+                            <svg class="swoosh-underline" viewBox="0 0 160 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <path d="M 6 5 Q 80 20 154 5" stroke="#F59E0B" stroke-width="4.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                            <!-- Sparkle Rays -->
+                            <svg class="sparkles-rays" viewBox="0 0 28 28" fill="none"
+                                xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                <line x1="6" y1="22" x2="20" y2="8" stroke="#F59E0B" stroke-width="4"
+                                    stroke-linecap="round" />
+                                <line x1="10" y1="26" x2="24" y2="19" stroke="#F59E0B" stroke-width="4"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </span>
+                    </span>
+                </h1>
+
+                <!-- Get Started CTA Button -->
+                <div class="welcome-cta-wrap">
+                    <button type="button" id="btnGetStarted" class="btn-primary"
+                        aria-label="Get Started with Visitor Registration">
+                        <span>Get Started</span>
+                        <svg class="btn-arrow-icon" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 3 Feature Benefits-->
+                <div class="welcome-benefits" role="region" aria-label="Key Benefits">
+                    <!-- 1. Fast -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon-badge badge-yellow">
+                            <img src="assets/images/icons/fast.png" alt="Fast" width="24" height="24">
+                        </div>
+                        <span class="benefit-text">Fast</span>
+                    </div>
+
+                    <!-- 2. Secure -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon-badge badge-green">
+                            <img src="assets/images/icons/secure.png" alt="Secure" width="24" height="24">
+                        </div>
+                        <span class="benefit-text">Secure</span>
+                    </div>
+
+                    <!-- 3. Easy -->
+                    <div class="benefit-card">
+                        <div class="benefit-icon-badge badge-blue">
+                            <img src="assets/images/icons/easy.png" alt="Easy" width="24" height="24">
+                        </div>
+                        <span class="benefit-text">Easy</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- SECTION: STEP 1 OF 4 — PURPOSE SELECTION -->
+        <section id="step1Section" class="purpose-screen" role="main" data-screen="step-1"
+            aria-label="Step 1 of 4: What brings you here today?">
+            <div class="purpose-container">
+                <!-- Headline -->
+                <h1 class="step-title">What brings you here today?</h1>
+
+                <!-- Purpose Cards Grid (2 Columns, 5th centered in 3rd row) -->
+                <div class="purpose-grid" role="radiogroup" aria-label="Purpose of visit">
+                    <!-- 1. Meeting -->
+                    <button type="button" class="purpose-card" data-purpose="Meeting" role="radio" aria-checked="false">
+                        <div class="purpose-icon-wrap">
+                            <img src="assets/images/image/Meetings.png" alt="Meeting" class="purpose-icon-img"
+                                width="76" height="76">
+                        </div>
+                        <span class="purpose-card-label">Meeting</span>
+                    </button>
+
+                    <!-- 2. Interview -->
+                    <button type="button" class="purpose-card is-selected" data-purpose="Interview" role="radio"
+                        aria-checked="true">
+                        <div class="purpose-icon-wrap">
+                            <img src="assets/images/image/Interview.png" alt="Interview" class="purpose-icon-img"
+                                width="76" height="76">
+                        </div>
+                        <span class="purpose-card-label">Interview</span>
+                    </button>
+
+                    <!-- 3. Delivery -->
+                    <button type="button" class="purpose-card" data-purpose="Delivery" role="radio"
+                        aria-checked="false">
+                        <div class="purpose-icon-wrap">
+                            <img src="assets/images/image/Delivery.png" alt="Delivery" class="purpose-icon-img"
+                                width="76" height="76">
+                        </div>
+                        <span class="purpose-card-label">Delivery</span>
+                    </button>
+
+                    <!-- 4. Service / Support -->
+                    <button type="button" class="purpose-card" data-purpose="Service / Support" role="radio"
+                        aria-checked="false">
+                        <div class="purpose-icon-wrap">
+                            <img src="assets/images/image/Services.png" alt="Service / Support" class="purpose-icon-img"
+                                width="76" height="76">
+                        </div>
+                        <span class="purpose-card-label">Service / Support</span>
+                    </button>
+
+                    <!-- 5. Other -->
+                    <button type="button" class="purpose-card" data-purpose="Other" role="radio" aria-checked="false">
+                        <div class="purpose-icon-wrap">
+                            <img src="assets/images/image/Other.png" alt="Other" class="purpose-icon-img" width="76"
+                                height="76">
+                        </div>
+                        <span class="purpose-card-label">Other</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: STEP 2 OF 4 — VERIFY YOUR DETAILS -->
+        <section id="step2Section" class="verify-screen" role="main" data-screen="step-2"
+            aria-label="Step 2 of 4: Verify your details" hidden>
+            <div class="verify-container">
+
+
+                <!-- Headline -->
+                <h1 class="step-title">Enter your details</h1>
+
+                <!-- Verify Details Form -->
+                <form id="verifyForm" class="verify-form" onsubmit="event.preventDefault();" novalidate>
+                    <!-- 1. Contact Number -->
+                    <div class="form-group">
+                        <label for="contactNumberInput" class="form-label">
+                            Contact Number <span class="required-star" aria-hidden="true">*</span>
+                        </label>
+                        <div class="phone-input-row">
+                            <div class="phone-input-group" id="phoneInputGroup">
+                                <div class="country-code-btn" role="button" aria-haspopup="listbox"
+                                    aria-label="Country Code">
+                                    <span class="country-code-text">+91</span>
+                                    <svg class="chevron-down-icon" width="14" height="14" viewBox="0 0 24 24"
+                                        fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                        stroke-linejoin="round" aria-hidden="true">
+                                        <polyline points="6 9 12 15 18 9"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="phone-divider" aria-hidden="true"></div>
+                                <input type="tel" id="contactNumberInput" class="phone-number-field" value=""
+                                    placeholder="Enter contact number" autocomplete="tel" required maxlength="10"
+                                    aria-required="true" aria-describedby="phoneError">
+                            </div>
+                            <button type="button" id="btnSendCode" class="btn-primary">
+                                Send Code
+                            </button>
+                        </div>
+                        <span class="form-field-error" id="phoneError" role="alert" hidden>
+                            Please enter your 10-digit contact number
+                        </span>
+                    </div>
+
+                    <!-- 2. Enter OTP -->
+                    <div class="form-group" id="otpFormGroup">
+                        <label class="form-label" id="otpLabel">
+                            Enter OTP <span class="required-star" aria-hidden="true">*</span>
+                        </label>
+                        <p class="form-helper-text" id="otpHelperText">We&apos;ll send a 4 digit code to verify your
+                            number</p>
+                        <div class="otp-row">
+                            <div class="otp-boxes-group" id="otpBoxesGroup" role="group" aria-labelledby="otpLabel">
+                                <input type="text" inputmode="numeric" maxlength="1" class="otp-box" value=""
+                                    aria-label="OTP digit 1" required aria-required="true">
+                                <input type="text" inputmode="numeric" maxlength="1" class="otp-box" value=""
+                                    aria-label="OTP digit 2" required aria-required="true">
+                                <input type="text" inputmode="numeric" maxlength="1" class="otp-box" value=""
+                                    aria-label="OTP digit 3" required aria-required="true">
+                                <input type="text" inputmode="numeric" maxlength="1" class="otp-box" value=""
+                                    aria-label="OTP digit 4" required aria-required="true">
+                            </div>
+
+                            <!-- OTP Verified tag comes before the OTP field -->
+                            <span id="otpVerifiedTag" class="otp-verified-tag" hidden aria-live="polite">
+                                <span class="check-circle-icon" aria-hidden="true">
+                                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span>
+                                <span>OTP Verified</span>
+                            </span>
+
+                            <!-- Resend OTP link wrapped to next line -->
+                            <div id="otpResendWrap" class="resend-timer-text">
+                                Resend in <span id="resendCountdown">30</span> seconds
+                            </div>
+                        </div>
+                        <span class="form-field-error" id="otpError" role="alert" hidden>
+                            Please enter the 4-digit verification code
+                        </span>
+                    </div>
+
+                    <!-- 3. Full Name -->
+                    <div class="form-group">
+                        <label for="fullNameInput" class="form-label">
+                            Full Name <span class="form-label-hint">(as per government ID)</span> <span
+                                class="required-star" aria-hidden="true">*</span>
+                        </label>
+                        <div class="input-with-icon-wrap" id="nameInputWrap">
+                            <span class="input-leading-icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="12" cy="7" r="4"></circle>
+                                </svg>
+                            </span>
+                            <input type="text" id="fullNameInput" class="form-text-input" required
+                                placeholder="Enter your full name" autocomplete="name" aria-required="true"
+                                aria-describedby="nameError">
+                        </div>
+                        <span class="form-field-error" id="nameError" role="alert" hidden>
+                            Please enter your full name as per government ID
+                        </span>
+                    </div>
+
+                    <!-- 4. ID Number -->
+                    <div class="form-group">
+                        <label for="idNumberInput" class="form-label">
+                            ID Number <span class="form-label-hint">(Adhar Card, PAN, Passport etc)</span> <span
+                                class="required-star" aria-hidden="true">*</span>
+                        </label>
+                        <div class="input-with-icon-wrap" id="idInputWrap">
+                            <span class="input-leading-icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="16" rx="3"></rect>
+                                    <path d="M6 8h4"></path>
+                                    <path d="M6 12h8"></path>
+                                    <circle cx="17" cy="9" r="1.5"></circle>
+                                    <path d="M6 16h5"></path>
+                                </svg>
+                            </span>
+                            <input type="text" required id="idNumberInput" class="form-text-input"
+                                placeholder="Enter government ID number" aria-required="true"
+                                aria-describedby="idError">
+                        </div>
+                        <span class="form-field-error" id="idError" role="alert" hidden>
+                            Please enter your government ID number
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION: STEP 3 OF 4 — CAPTURE LIVE PHOTO -->
+        <section id="step3Section" class="capture-screen" role="main" data-screen="step-3"
+            aria-label="Step 3 of 4: Capture live photo" hidden>
+            <div class="capture-container">
+
+                <!-- Headline & Subtitle -->
+                <h1 class="step-title capture-title">Capture live photo</h1>
+                <p class="step-subtitle">
+                    Please look at the camera and blink once to<br class="hide-mobile"> capture your photo
+                </p>
+
+                <!-- Photo Viewfinder Frame -->
+                <div class="capture-frame-wrap">
+                    <div class="capture-frame" id="captureFrame">
+                        <!-- Live Camera  -->
+                        <video id="cameraVideo" class="capture-video" autoplay playsinline muted></video>
+
+                        <!-- Live Photo Preview Snapshot -->
+                        <img id="capturedPhotoImg" alt="Live Photo Preview" class="capture-img" hidden>
+
+                        <!-- Shutter Flash -->
+                        <div id="captureFlash" class="capture-flash" aria-hidden="true"></div>
+
+                        <!-- Face Positioning Guide Oval -->
+                        <div class="face-guide-overlay" aria-hidden="true"></div>
+
+                        <!-- Fallback State (if camera permission is denied )-->
+                        <div id="cameraFallback" class="camera-fallback" hidden>
+                            <div class="camera-fallback-icon">📷</div>
+                            <div class="camera-fallback-text">Camera offline or permission needed</div>
+                            <button type="button" id="btnRequestCamera" class="btn-primary">Enable Camera</button>
+                        </div>
+                    </div>
+
+                    <!-- Hidden Canvas  -->
+                    <canvas id="captureCanvas" width="480" height="480" style="display: none;"></canvas>
+
+                    <!-- Status Indicator & Retake Action -->
+                    <div class="capture-controls-wrap">
+                        <div id="captureStatusBadge" class="capture-status-badge">
+                            <span class="status-dot-pulse"></span>
+                            <span id="captureStatusText">Align face within circle</span>
+                        </div>
+                        <button type="button" id="btnRetakePhoto" class="btn-secondary" hidden>
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                            </svg>
+                            <span>Retake Photo</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Info Note -->
+                <div class="capture-info-note">
+                    <svg class="capture-info-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
+                        aria-hidden="true">
+                        <path fill-rule="evenodd"
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                    <span>This image is only for the day pass</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: STEP 4 OF 4 — REVIEW & CONFIRM -->
+        <section id="step4Section" class="review-screen" role="main" data-screen="step-4"
+            aria-label="Step 4 of 4: You're almost there" hidden>
+            <div class="review-container">
+
+                <!-- Headline -->
+                <h1 class="step-title review-title">You&apos;re almost there.</h1>
+
+                <!-- Visitor Review Card -->
+                <div class="review-card">
+                    <!-- Left: Circular Photo with Badge -->
+                    <div class="review-avatar-wrap">
+                        <div class="review-avatar-frame">
+                            <img id="reviewAvatarImg" src="assets/images/image/yathish.png" alt="Yathish Shettigar"
+                                class="review-avatar-img">
+                        </div>
+                        <div class="invitation-badge">
+                            <span class="badge-dot"></span>
+                            <span>Profile verified</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Details List -->
+                    <div class="review-details-wrap">
+                        <!-- Top header row -->
+                        <div class="review-header-row">
+                            <span class="review-label">VISITOR</span>
+                        </div>
+
+                        <!-- Visitor Name -->
+                        <div class="review-name" id="reviewFullName">Yathish Shettigar</div>
+
+                        <!-- Detail Rows -->
+                        <div class="review-field-group">
+                            <div class="review-field">
+                                <span class="review-field-label">Contact Number</span>
+                                <span class="review-field-value" id="reviewPhone">+91 9874563210</span>
+                            </div>
+
+                            <div class="review-field">
+                                <span class="review-field-label">Government ID</span>
+                                <span class="review-field-value" id="reviewGovId">9874 5455 4455</span>
+                            </div>
+
+                            <div class="review-field">
+                                <span class="review-field-label">PURPOSE</span>
+                                <span class="review-field-value" id="reviewPurpose">Interview</span>
+                            </div>
+
+                            <div class="review-field">
+                                <span class="review-field-label">DATE & TIME</span>
+                                <span class="review-field-value" id="reviewDateTime">6 Oct 2026 · 11:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: CONFIRMATION — CHECK IN SUCCESSFUL -->
+        <section id="confirmationSection" class="confirmation-screen" role="main" data-screen="confirmation"
+            aria-label="Check in Successful" hidden>
+            <div class="confirmation-container">
+                <!-- Check Icon with Animation -->
+                <div class="check-animation-wrap" id="checkAnimationWrap">
+                    <div class="check-pulse-ring"></div>
+                    <div class="simple-check-badge">
+                        <svg class="simple-check-svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"
+                            aria-hidden="true">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Headline -->
+                <h1 class="confirmation-title">
+                    <span>Check in</span>
+                    <span class="confirmation-success-word">Successful!</span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="confirmation-subtitle">
+                    Your visitor pass has been sent to your<br class="hide-mobile"> registered mobile number.
+                </p>
+
+                <!-- Digital Visitor Pass Card -->
+                <div class="digital-pass-card">
+                    <!-- Captured Photo -->
+                    <div class="pass-photo-wrap">
+                        <img id="passPhotoImg" src="assets/images/image/yathish.png" alt="Yathish Shettigar"
+                            class="pass-photo-img">
+                    </div>
+
+                    <!-- Visitor Details -->
+                    <div class="pass-info-wrap">
+                        <span class="pass-status-pill">Visitor Pass</span>
+                        <h3 class="pass-visitor-name" id="passFullName">Yathish Shettigar</h3>
+                        <div class="pass-meta-list">
+                            <div class="pass-meta-item">
+                                <svg class="pass-icon" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <path
+                                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                                    </path>
+                                </svg>
+                                <span id="passPhone">+91 9874563210</span>
+                            </div>
+                            <div class="pass-meta-item">
+                                <svg class="pass-icon" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <rect x="3" y="4" width="18" height="16" rx="2"></rect>
+                                    <line x1="7" y1="8" x2="17" y2="8"></line>
+                                    <line x1="7" y1="12" x2="13" y2="12"></line>
+                                    <circle cx="15.5" cy="12" r="1.5"></circle>
+                                </svg>
+                                <span id="passGovId">9874 5455 4455</span>
+                            </div>
+                            <div class="pass-meta-item">
+                                <svg class="pass-icon" width="13" height="13" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                                    stroke-linejoin="round" aria-hidden="true">
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <path
+                                        d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+                                    </path>
+                                </svg>
+                                <span id="passPurpose">Interview</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- QR Code Block -->
+                    <div class="pass-qr-box">
+                        <img src="assets/images/qr-code.svg" alt="QR Code TF-10482" class="pass-qr-image" width="76"
+                            height="76">
+                        <div class="pass-qr-meta">
+                            <div class="pass-qr-code-text">TF-10482</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reset Notice -->
+                <p class="confirmation-reset-note">
+                    This session will securely reset in <span id="resetCountdown" class="countdown-highlight">15</span>
+                    seconds.
+                </p>
+
+                <!-- Done Button -->
+                <button type="button" id="btnDoneSession" class="btn-primary" aria-label="Finish and reset session">
+                    Done
+                </button>
+            </div>
+        </section>
+
+        <!-- FIXED BOTTOM FOOTER WITH CTA -->
+        <footer id="flowFooter" class="flow-fixed-footer" role="region" aria-label="Flow Navigation">
+            <div class="flow-footer-inner max-w-8xl">
+                <!-- Back / Edit Details Button -->
+                <button type="button" id="btnFlowBack" class="btn-secondary" aria-label="Go back to previous screen">
+                    <svg id="backChevronIcon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span id="btnBackText">Back</span>
+                </button>
+
+                <!-- Center Stepper Count & Progress Bar -->
+                <div class="footer-stepper-wrap" id="footerStepper" aria-label="Registration Progress">
+                    <div class="step-progress-label" id="footerStepLabel">Step 1 of 4</div>
+                    <div class="step-progress-track" id="footerStepTrack">
+                        <div class="progress-segment is-active"></div>
+                        <div class="progress-segment"></div>
+                        <div class="progress-segment"></div>
+                        <div class="progress-segment"></div>
+                    </div>
+                </div>
+
+                <!-- Continue / Confirm Check-in Button -->
+                <button type="button" id="btnFlowContinue" class="btn-primary" aria-label="Continue to next step">
+                    <span id="btnContinueText">Continue</span>
+                </button>
+            </div>
+        </footer>
+
+
+
+    </div>
+</body>
+
+</html>
